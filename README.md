@@ -1,4 +1,4 @@
-Archaic introgression lecture exercises (February 2025)
+Archaic introgression lecture exercises (February 2026)
 ================
 
 **This document contains two simple exercises** for you to practice
@@ -14,7 +14,7 @@ same content as this one, except that each R code cell has its result
 (numbers, tables, plots) shown right under.
 
 You can find the slides from the lecture
-[here](https://github.com/bodkan/ku-introgression2025/blob/main/lecture.pdf)
+[here](https://github.com/bodkan/ku-introgression2026/blob/main/lecture.pdf)
 or on the Absalon page for today’s session.
 
 ## Exercise 1: Testing introgression using the $f_4$ statistic
@@ -38,9 +38,7 @@ sample* $X$.
 are probably African and which are Eurasian based on the following*
 $f_4$ *statistic test?*
 
-$$
-f_4(\textrm{African}, X; \textrm{Neanderthal}, \textrm{Chimp}).
-$$
+$$f_4(\textrm{African}, X; \textrm{Neanderthal}, \textrm{Chimp}).$$
 
 *Recall that only Eurasians are expected to have appreciable amounts of
 Neanderthal ancestry but Africans don’t. So, hopefully, by computing
@@ -65,7 +63,7 @@ You’ll be writing your solutions to this exercise in that script.
 First **read the genotype table into R**:
 
 ``` r
-gt <- read.table(url("https://github.com/bodkan/ku-introgression2025/raw/main/genotypes_ex1.tsv"), sep = "\t", header = TRUE)
+gt <- read.table(url("https://github.com/bodkan/ku-introgression2026/raw/main/genotypes_ex1.tsv"), sep = "\t", header = TRUE)
 ```
 
 **Familiarize yourself with the data** by running this R command which
@@ -323,7 +321,7 @@ with one additional column called `another_Neanderthal`. You can read
 the new data like this:**
 
 ``` r
-gt <- read.table(url("https://github.com/bodkan/ku-introgression2025/raw/main/genotypes_ex2.tsv"), sep = "\t", header = TRUE)
+gt <- read.table(url("https://github.com/bodkan/ku-introgression2026/raw/main/genotypes_ex2.tsv"), sep = "\t", header = TRUE)
 ```
 
 As always, **verify that the format of the data and its contents matches

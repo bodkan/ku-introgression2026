@@ -635,8 +635,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
 
 <body>
 
-<h1 id="archaic-introgression-lecture-exercises-february-2025">Archaic
-introgression lecture exercises (February 2025)</h1>
+<h1 id="archaic-introgression-lecture-exercises-february-2026">Archaic
+introgression lecture exercises (February 2026)</h1>
 <p><strong>This document contains two simple exercises</strong> for you
 to practice tests of introgression (and the quantification of the amount
 of introgression). <strong>Each exercise is broken up in to Tasks, which
@@ -647,7 +647,7 @@ click <a href="README_solutions.md">here</a> (but please try to solve
 the exercises on your own at first!). This link takes you to a document
 with the exact same content as this one, except that each R code cell
 has its result (numbers, tables, plots) shown right under.</p>
-<p>You can find the slides from the lecture <a href="https://github.com/bodkan/ku-introgression2025/blob/main/lecture.pdf">here</a>
+<p>You can find the slides from the lecture <a href="https://github.com/bodkan/ku-introgression2026/blob/main/lecture.pdf">here</a>
 or on the Absalon page for today’s session.</p>
 <h2 id="exercise-1-testing-introgression-using-the-f_4-statistic">Exercise
 1: Testing introgression using the <span class="math inline">\(f_4\)</span> statistic</h2>
@@ -666,9 +666,8 @@ evidence of Neanderthal introgression in some sample</em> <span class="math inli
 samples are probably African and which are Eurasian based on the
 following</em> <span class="math inline">\(f_4\)</span> <em>statistic
 test?</em></p>
-<p><span class="math display">\[
-f_4(\textrm{African}, X; \textrm{Neanderthal}, \textrm{Chimp}).
-\]</span></p>
+<p><span class="math display">\[f_4(\textrm{African}, X;
+\textrm{Neanderthal}, \textrm{Chimp}).\]</span></p>
 <p><em>Recall that only Eurasians are expected to have appreciable
 amounts of Neanderthal ancestry but Africans don’t. So, hopefully, by
 computing this statistic for all of the mixed up samples A, B, C, etc.
@@ -689,7 +688,7 @@ this exercise in that script.</p>
 <h4 id="task-read-and-inspect-the-genotypes-of-all-the-sequenced-samples">Task:
 Read and inspect the genotypes of all the sequenced samples</h4>
 <p>First <strong>read the genotype table into R</strong>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>gt <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="fu">url</span>(<span class="st">&quot;https://github.com/bodkan/ku-introgression2025/raw/main/genotypes_ex1.tsv&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>gt <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="fu">url</span>(<span class="st">&quot;https://github.com/bodkan/ku-introgression2026/raw/main/genotypes_ex1.tsv&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><strong>Familiarize yourself with the data</strong> by running this R
 command which shows genotype information from only the first few sites
 in the genome:</p>
@@ -887,7 +886,7 @@ Read and inspect the genotypes of all the sequenced samples</h4>
 exercise, with one additional column called
 <code>another_Neanderthal</code>. You can read the new data like
 this:</strong></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>gt <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="fu">url</span>(<span class="st">&quot;https://github.com/bodkan/ku-introgression2025/raw/main/genotypes_ex2.tsv&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>gt <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="fu">url</span>(<span class="st">&quot;https://github.com/bodkan/ku-introgression2026/raw/main/genotypes_ex2.tsv&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>As always, <strong>verify that the format of the data and its
 contents matches what you expect:</strong></p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">head</span>(gt)</span>
