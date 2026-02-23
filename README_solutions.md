@@ -17,6 +17,12 @@ You can find the slides from the lecture
 [here](https://github.com/bodkan/ku-introgression2026/blob/main/lecture.pdf)
 or on the Absalon page for today’s session.
 
+**The exercises involve a tiny bit of R programming. If you haven’t used
+R before, don’t stress. Feel free to copy-paste the R code chunks I
+provide below into R on your computer just as they are. The purpose is
+to think about data and try to interpret results, not worry about
+technicalities!**
+
 ## Exercise 1: Testing introgression using the $f_4$ statistic
 
 ### Introduction
