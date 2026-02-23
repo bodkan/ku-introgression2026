@@ -1,5 +1,5 @@
 ---
-title: Archaic introgression lecture exercises (February 2025)
+title: Archaic introgression lecture exercises (February 2026)
 output:
   github_document:
    # html_preview: false
@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 If you want to see this document with all the solutions included, click [here](README_solutions.md) (but please try to solve the exercises on your own at first!). This link takes you to a document with the exact same content as this one, except that each R code cell has its result (numbers, tables, plots) shown right under.
 
-You can find the slides from the lecture [here](https://github.com/bodkan/ku-introgression2025/blob/main/lecture.pdf) or on the Absalon page for today's session.
+You can find the slides from the lecture [here](https://github.com/bodkan/ku-introgression2026/blob/main/lecture.pdf) or on the Absalon page for today's session.
 
 ## Exercise 1: Testing introgression using the $f_4$ statistic
 
@@ -47,7 +47,7 @@ _Recall that only Eurasians are expected to have appreciable amounts of Neandert
 First **read the genotype table into R**:
 
 ```{r}
-gt <- read.table(url("https://github.com/bodkan/ku-introgression2025/raw/main/genotypes_ex1.tsv"), sep = "\t", header = TRUE)
+gt <- read.table(url("https://github.com/bodkan/ku-introgression2026/raw/main/genotypes_ex1.tsv"), sep = "\t", header = TRUE)
 ```
 
 **Familiarize yourself with the data** by running this R command which shows genotype information from only the first few sites in the genome:
@@ -241,7 +241,7 @@ _Of course, in order to compute this_ $f_4$ _-ratio estimate, you will need "ano
 **You will be using the same genotype table as in the previous exercise, with one additional column called `another_Neanderthal`. You can read the new data like this:**
 
 ```{r}
-gt <- read.table(url("https://github.com/bodkan/ku-introgression2025/raw/main/genotypes_ex2.tsv"), sep = "\t", header = TRUE)
+gt <- read.table(url("https://github.com/bodkan/ku-introgression2026/raw/main/genotypes_ex2.tsv"), sep = "\t", header = TRUE)
 ```
 
 As always, **verify that the format of the data and its contents matches what you expect:**
