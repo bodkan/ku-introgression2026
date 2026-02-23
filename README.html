@@ -635,11 +635,11 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
 
 <body>
 
-<h1 id="archaic-introgression-lecture-exercises-february-2026">Archaic
-introgression lecture exercises (February 2026)</h1>
+<h1 id="archaic-introgression-exercises-february-2026">Archaic
+introgression exercises (February 2026)</h1>
 <p><strong>This document contains two simple exercises</strong> for you
 to practice tests of introgression (and the quantification of the amount
-of introgression). <strong>Each exercise is broken up in to Tasks, which
+of introgression). <strong>Each exercise is broken up into Tasks, which
 are always highlighted in bold and intended to be solved one after
 another</strong>.</p>
 <p>If you want to see this document with all the solutions included,
@@ -659,53 +659,60 @@ Unfortunately, there’s been a mix up in the lab and you don’t know which
 one of them is African and which is Eurasian! You only know that they
 are labeled A, B, C, …, H. What a disaster!</em></p>
 <p><em>Fortunately, you also have genotypes from three other individuals
-whose identity you know for certain: an African, a Neanderthal, and a
-chimpanzee. This means that you are able to compute an</em> <span class="math inline">\(f_4\)</span> <em>statistic which will test for
-evidence of Neanderthal introgression in some sample</em> <span class="math inline">\(X\)</span>.</p>
+whose identity you know for certain and who are therefore labelled
+properly: another African, a Neanderthal, and a chimpanzee. This means
+that you are able to compute an</em> <span class="math inline">\(f_4\)</span> _statistic which will test for
+evidence of Neanderthal introgression in some given “test sample” <span class="math inline">\(X\)</span>.</p>
 <p><em>Can you save the day and determine which of the A, B, C, …, H
 samples are probably African and which are Eurasian based on the
 following</em> <span class="math inline">\(f_4\)</span> <em>statistic
 test?</em></p>
 <p><span class="math display">\[f_4(\textrm{African}, X;
 \textrm{Neanderthal}, \textrm{Chimp}).\]</span></p>
-<p><em>Recall that only Eurasians are expected to have appreciable
-amounts of Neanderthal ancestry but Africans don’t. So, hopefully, by
-computing this statistic for all of the mixed up samples A, B, C, etc.
-(i.e., computing it for each of them in place of X, one after another),
-you should be able to determine who is likely African (these won’t show
-evidence of Neanderthal introgression, giving</em> <span class="math inline">\(f_4\)</span> <em>values close to zero) and who is
-Eurasian (these will give</em> <span class="math inline">\(f_4\)</span>
-<em>values significantly more negative).</em></p>
+<p><em>Recall from our lecture that only Eurasians are expected to have
+appreciable amounts of Neanderthal ancestry but Africans don’t. So,
+hopefully, by computing this statistic for all of the mixed up samples
+A, B, C, etc. (i.e., computing it for each of them in place of X, one
+after another), you should be able to determine who is likely African
+(these won’t show evidence of Neanderthal introgression, giving</em>
+<span class="math inline">\(f_4\)</span> <em>values close to zero) and
+who is Eurasian (these will give</em> <span class="math inline">\(f_4\)</span> <em>values significantly more
+negative).</em></p>
 <h3 id="moving-over-to-r">Moving over to R</h3>
-<p><strong>Type <code>R</code> in your terminal or (better) just use
-RStudio</strong> R console if you have it. You can either do this on
+<p><strong>Type <code>R</code> in your terminal or just use RStudio
+(better, if you have it)</strong> R console. You can either do this on
 your own laptop (I recommend this option if you have R installed) or on
 the server you’ve worked on so far. <strong>Create a script
 (<code>File -&gt; New File -&gt; R Script</code> in RStudio, or just
-create it in any other text edit) and save it as
+create it in any other text editor) and save it as
 <code>exercise1.R</code>.</strong> You’ll be writing your solutions to
 this exercise in that script.</p>
 <h4 id="task-read-and-inspect-the-genotypes-of-all-the-sequenced-samples">Task:
 Read and inspect the genotypes of all the sequenced samples</h4>
 <p>First <strong>read the genotype table into R</strong>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>gt <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="fu">url</span>(<span class="st">&quot;https://github.com/bodkan/ku-introgression2026/raw/main/genotypes_ex1.tsv&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><strong>Familiarize yourself with the data</strong> by running this R
-command which shows genotype information from only the first few sites
-in the genome:</p>
+<p><strong>Familiarize yourself with the data</strong> by running the
+following R command which shows genotype information from only the first
+few sites in the genome. The columns of the table should correspond to
+the names of individuals (known or mismatched) as we described them in
+the introduction to this exercise.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">head</span>(gt)</span></code></pre></div>
 <p>You can see that the <code>gt</code> data set is a plain R data
 frame, in which each column contains the genotypes of that individual
-(<code>0</code> - ancestral allele, <code>1</code> - derived
-allele).</p>
+(<code>0</code> - ancestral allele, <code>1</code> - derived allele). It
+might surprise you, but this is the form of the genotype data we work in
+genomics most often!</p>
 <h4 id="task-count-snps">Task: Count SNPs</h4>
 <p><strong>For how many loci in the genome do we have genotype data
 available?</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">nrow</span>(gt)</span></code></pre></div>
-<h4 id="task-count-afr-chimp-nea-chimp-afr-nea-shared-alleles">Task:
-Count AFR-Chimp, NEA-Chimp, AFR-NEA shared alleles</h4>
-<p>You can extract all genotypes of a given individual as a single
-vector by using the <code>$</code> or <code>[[</code> subsetting
-operators of R data frames like this:</p>
+<h4 id="task-count-shared-sites-between-african-chimp-neanderthal-chimp-african-neanderthal">Task:
+Count shared sites between African-Chimp, Neanderthal-Chimp,
+African-Neanderthal</h4>
+<p>In R, you can extract all genotypes (columns of a table) of a given
+individual as a vector of values by using the <code>$</code> or
+<code>[[</code> subsetting operators. For instance, this is how we can
+get all allele states of the African chromosome:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>gt<span class="sc">$</span>African</span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>gt[[<span class="st">&quot;African&quot;</span>]]</span></code></pre></div>
@@ -718,10 +725,13 @@ chromosome:</p>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>gt[[<span class="st">&quot;Neanderthal&quot;</span>]]</span></code></pre></div>
 <p>then we can find loci at which those two samples carry the same
-allele like this:</p>
+allele with the following command. Notice that it returns either
+<code>TRUE</code> or <code>FALSE</code>!</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>gt[[<span class="st">&quot;African&quot;</span>]] <span class="sc">==</span> gt[[<span class="st">&quot;Neanderthal&quot;</span>]] <span class="co"># this gives us TRUE/FALSE values </span></span></code></pre></div>
-<p>Counting such matching loci can be done using the <code>sum()</code>
-function like this:</p>
+<p>Another useful shortcut trick is that we can count the number of
+elements which are <code>TRUE</code> (in this case, the number of
+matching alleles between two chromosomes) simply using the
+<code>sum()</code> function like this:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># sum() treats TRUE as 1 and FALSE as 0, so we can sum everything up!</span></span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co"># -- this gives us the number of positions at which an African carries the same</span></span>
 <span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#    allele as the Neanderthal</span></span>
@@ -734,10 +744,10 @@ function like this:</p>
 a phylogenetic point of view?</strong> (Recall what is the phylogenetic
 relationship between Africans, Eurasians, Neanderthals, and
 Chimpanzees).</p>
-<h4 id="task-compute-f_4textrmafr-x-nea-chimp-for-one-of-the-unknown-samples-a-h-as-x-in-this-equation">Task:
-Compute <span class="math inline">\(f_4(\textrm{AFR, X; NEA,
-Chimp})\)</span> for one of the unknown samples A-H as <code>X</code> in
-this equation</h4>
+<h4 id="task-compute-f_4textrmafrican-x-neanderthal-chimp-by-substituting-one-of-the-unknown-samples-a-h-as-x-in-this-equation">Task:
+Compute <span class="math inline">\(f_4(\textrm{African, X; Neanderthal,
+Chimp})\)</span> by substituting one of the unknown samples A-H as
+<code>X</code> in this equation</h4>
 <p>Above we computed alleles which <em>agree</em> between two
 samples.</p>
 <p>On the other hand, this would count how many alleles are
@@ -775,11 +785,11 @@ SNPs we have in our data set:</p>
 <p>We will get to deciding whether this value is significant or not (and
 how to make sense of these numbers for our example data set)
 shortly.</p>
-<h4 id="task-are-abba-or-baba-sites-the-only-ones-in-our-data-for-instance-can-you-find-if-there-are-any-aaab-sites-for-the-quartet-f_4textrmafr-x-nea-chimp-why-arent-those-useful-for-testing-the-evidence-of-neanderthal-introgression">Task:
+<h4 id="task-are-abba-or-baba-sites-the-only-ones-in-our-data-for-instance-can-you-find-if-there-are-any-aaab-sites-for-the-quartet-f_4textrmafrican-x-neanderthal-chimp-why-arent-those-useful-for-testing-the-evidence-of-neanderthal-introgression">Task:
 Are ABBA or BABA sites the only ones in our data? For instance, can you
-find if there are any AAAB sites for the quartet <span class="math inline">\(f_4(\textrm{AFR, X; NEA, Chimp})\)</span>? Why
-aren’t those useful for testing the evidence of Neanderthal
-introgression?</h4>
+find if there are any AAAB sites for the quartet <span class="math inline">\(f_4(\textrm{African, X; Neanderthal,
+Chimp})\)</span>? Why aren’t those useful for testing the evidence of
+Neanderthal introgression?</h4>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="st">&quot;A&quot;</span></span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>aaab <span class="ot">&lt;-</span> <span class="fu">sum</span>(</span>
@@ -797,18 +807,16 @@ patterns from the <span class="math inline">\(f_4(\textrm{AFR, X; NEA,
 Chimp})\)</span> quartet, so the difference should “be about zero”.
 <strong>Use the code above to compute <code>baba</code>,
 <code>abba</code>, and <code>f4_value</code> to for all of your mixed up
-samples A, B, C, …, H, and note down the values you got for each of them
-– which samples are most likely African and which ones are
+samples A, B, C, …, H, and note down the values you got for each of
+them. Which samples are most likely African and which ones are
 Eurasian?</strong></p>
-<p><em>[If you are more familiar with R, compute the counts
-automatically in a loop of some kind and make a figure.]</em></p>
-<h4 id="task-what-does-it-mean-for-this-test-statistic-to-be-about-zero-what-are-we-missing-to-truly-use-this-as-a-statistical-significance-test">Task:
-<strong>What does it mean for this test statistic to “be about zero”?
-What are we missing to truly use this as a statistical significance
-test?</strong></h4>
-<hr />
-<p>If you’re not comfortable with R, feel free to run this in full and
-answer the questions from tasks above based on the results you get:</p>
+<ul>
+<li><strong>If you are more familiar with R, compute the counts
+automatically in a loop of some kind and make a figure.</strong></li>
+<li><strong>If you’re not comfortable with R, feel free to run the
+following code in full and answer the question based on the results you
+get.</strong></li>
+</ul>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;H&quot;</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>f4_values <span class="ot">&lt;-</span> <span class="fu">sapply</span>(X, <span class="cf">function</span>(x) {</span>
@@ -831,6 +839,10 @@ answer the questions from tasks above based on the results you get:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">plot</span>(f4_values, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;test sample&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;f4(African, X; Neanderthal, Chimp)&quot;</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq_along</span>(X), <span class="at">labels =</span> X)</span></code></pre></div>
+<h4 id="task-what-does-it-mean-for-this-test-statistic-to-be-about-zero-what-are-we-missing-to-truly-use-this-as-a-statistical-significance-test">Task:
+<strong>What does it mean for this test statistic to “be about zero”?
+What are we missing to truly use this as a statistical significance
+test?</strong></h4>
 <p>We can see that the samples A-D are consistent with an <span class="math inline">\(f_4\)</span> statistic “value of about 0”, meaning
 that the BABA and ABBA counts were “about the same”. This is what we
 would expect for African samples who are not expected to be closer to a
@@ -876,10 +888,9 @@ Neanderthal”.</em></p>
 your A-H samples!</strong></p>
 <h3 id="moving-over-to-r-1">Moving over to R</h3>
 <p><strong>Create a script
-(<code>File -&gt; New File -&gt; R Script</code> in RStudio, or just
-create it in any other text edit) and save it as
-<code>exercise2.R</code>.</strong> You’ll be writing your solutions to
-this exercise in that script.</p>
+(<code>File -&gt; New File -&gt; R Script</code> in RStudio) and save it
+as <code>exercise2.R</code>.</strong> You’ll be writing your solutions
+to this exercise in that script.</p>
 <h4 id="task-read-and-inspect-the-genotypes-of-all-the-sequenced-samples-1">Task:
 Read and inspect the genotypes of all the sequenced samples</h4>
 <p><strong>You will be using the same genotype table as in the previous
@@ -892,6 +903,8 @@ contents matches what you expect:</strong></p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">head</span>(gt)</span>
 <span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="fu">nrow</span>(gt)</span></code></pre></div>
+<p><strong>Notice the presence of a new column called “another
+Neanderthal”.</strong></p>
 <h4 id="task-estimate-neanderthal-ancestry-proportion-in-samples-a-h">Task:
 Estimate Neanderthal ancestry proportion in samples A-H</h4>
 <p>From the lecture you know that we can get an estimate for the
@@ -947,6 +960,16 @@ lecture?</strong></p>
 very last item of the <code>proportions</code> variable? What does that
 last element of the vector <code>proportions</code> contain and
 why?</strong></h4>
+<p>By definition, the “proportion of Neanderthal ancestry in ‘another
+Neanderthal’” is 100%, which would make the plot hard to interpret. We
+use this proportion in “another Neanderthal” only to establish a
+statistical baseline of “how much Neanderthal is a Neanderthal expected
+to be”, but not as a real data point of interest:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">plot</span>(proportions <span class="sc">*</span> <span class="dv">100</span>, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;test individual&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;proportion of Neanderthal ancestry [%]&quot;</span>,</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>))</span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">3</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq_along</span>(X), <span class="at">labels =</span> X)</span></code></pre></div>
 <hr />
 <p>If you want to take a closer look at how the genotype data was
 prepared (it was simulated!), you can see the complete code <a href="generate_genotypes.R">here</a>.</p>

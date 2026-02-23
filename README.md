@@ -1,9 +1,9 @@
-Archaic introgression lecture exercises (February 2026)
+Archaic introgression exercises (February 2026)
 ================
 
 **This document contains two simple exercises** for you to practice
 tests of introgression (and the quantification of the amount of
-introgression). **Each exercise is broken up in to Tasks, which are
+introgression). **Each exercise is broken up into Tasks, which are
 always highlighted in bold and intended to be solved one after
 another**.
 
@@ -29,10 +29,10 @@ one of them is African and which is Eurasian! You only know that they
 are labeled A, B, C, …, H. What a disaster!*
 
 *Fortunately, you also have genotypes from three other individuals whose
-identity you know for certain: an African, a Neanderthal, and a
-chimpanzee. This means that you are able to compute an* $f_4$ *statistic
-which will test for evidence of Neanderthal introgression in some
-sample* $X$.
+identity you know for certain and who are therefore labelled properly:
+another African, a Neanderthal, and a chimpanzee. This means that you
+are able to compute an* $f_4$ \_statistic which will test for evidence
+of Neanderthal introgression in some given “test sample” $X$.
 
 *Can you save the day and determine which of the A, B, C, …, H samples
 are probably African and which are Eurasian based on the following*
@@ -40,22 +40,22 @@ $f_4$ *statistic test?*
 
 $$f_4(\textrm{African}, X; \textrm{Neanderthal}, \textrm{Chimp}).$$
 
-*Recall that only Eurasians are expected to have appreciable amounts of
-Neanderthal ancestry but Africans don’t. So, hopefully, by computing
-this statistic for all of the mixed up samples A, B, C, etc. (i.e.,
-computing it for each of them in place of X, one after another), you
-should be able to determine who is likely African (these won’t show
-evidence of Neanderthal introgression, giving* $f_4$ *values close to
-zero) and who is Eurasian (these will give* $f_4$ *values significantly
-more negative).*
+*Recall from our lecture that only Eurasians are expected to have
+appreciable amounts of Neanderthal ancestry but Africans don’t. So,
+hopefully, by computing this statistic for all of the mixed up samples
+A, B, C, etc. (i.e., computing it for each of them in place of X, one
+after another), you should be able to determine who is likely African
+(these won’t show evidence of Neanderthal introgression, giving* $f_4$
+*values close to zero) and who is Eurasian (these will give* $f_4$
+*values significantly more negative).*
 
 ### Moving over to R
 
-**Type `R` in your terminal or (better) just use RStudio** R console if
-you have it. You can either do this on your own laptop (I recommend this
-option if you have R installed) or on the server you’ve worked on so
-far. **Create a script (`File -> New File -> R Script` in RStudio, or
-just create it in any other text edit) and save it as `exercise1.R`.**
+**Type `R` in your terminal or just use RStudio (better, if you have
+it)** R console. You can either do this on your own laptop (I recommend
+this option if you have R installed) or on the server you’ve worked on
+so far. **Create a script (`File -> New File -> R Script` in RStudio, or
+just create it in any other text editor) and save it as `exercise1.R`.**
 You’ll be writing your solutions to this exercise in that script.
 
 #### Task: Read and inspect the genotypes of all the sequenced samples
@@ -66,8 +66,11 @@ First **read the genotype table into R**:
 gt <- read.table(url("https://github.com/bodkan/ku-introgression2026/raw/main/genotypes_ex1.tsv"), sep = "\t", header = TRUE)
 ```
 
-**Familiarize yourself with the data** by running this R command which
-shows genotype information from only the first few sites in the genome:
+**Familiarize yourself with the data** by running the following R
+command which shows genotype information from only the first few sites
+in the genome. The columns of the table should correspond to the names
+of individuals (known or mismatched) as we described them in the
+introduction to this exercise.
 
 ``` r
 head(gt)
@@ -75,7 +78,8 @@ head(gt)
 
 You can see that the `gt` data set is a plain R data frame, in which
 each column contains the genotypes of that individual (`0` - ancestral
-allele, `1` - derived allele).
+allele, `1` - derived allele). It might surprise you, but this is the
+form of the genotype data we work in genomics most often!
 
 #### Task: Count SNPs
 
@@ -85,11 +89,12 @@ allele, `1` - derived allele).
 nrow(gt)
 ```
 
-#### Task: Count AFR-Chimp, NEA-Chimp, AFR-NEA shared alleles
+#### Task: Count shared sites between African-Chimp, Neanderthal-Chimp, African-Neanderthal
 
-You can extract all genotypes of a given individual as a single vector
-by using the `$` or `[[` subsetting operators of R data frames like
-this:
+In R, you can extract all genotypes (columns of a table) of a given
+individual as a vector of values by using the `$` or `[[` subsetting
+operators. For instance, this is how we can get all allele states of the
+African chromosome:
 
 ``` r
 gt$African
@@ -109,14 +114,16 @@ gt[["Neanderthal"]]
 ```
 
 then we can find loci at which those two samples carry the same allele
-like this:
+with the following command. Notice that it returns either `TRUE` or
+`FALSE`!
 
 ``` r
 gt[["African"]] == gt[["Neanderthal"]] # this gives us TRUE/FALSE values 
 ```
 
-Counting such matching loci can be done using the `sum()` function like
-this:
+Another useful shortcut trick is that we can count the number of
+elements which are `TRUE` (in this case, the number of matching alleles
+between two chromosomes) simply using the `sum()` function like this:
 
 ``` r
 # sum() treats TRUE as 1 and FALSE as 0, so we can sum everything up!
@@ -138,7 +145,7 @@ phylogenetic point of view?** (Recall what is the phylogenetic
 relationship between Africans, Eurasians, Neanderthals, and
 Chimpanzees).
 
-#### Task: Compute $f_4(\textrm{AFR, X; NEA, Chimp})$ for one of the unknown samples A-H as `X` in this equation
+#### Task: Compute $f_4(\textrm{African, X; Neanderthal, Chimp})$ by substituting one of the unknown samples A-H as `X` in this equation
 
 Above we computed alleles which *agree* between two samples.
 
@@ -193,7 +200,7 @@ f4_value
 We will get to deciding whether this value is significant or not (and
 how to make sense of these numbers for our example data set) shortly.
 
-#### Task: Are ABBA or BABA sites the only ones in our data? For instance, can you find if there are any AAAB sites for the quartet $f_4(\textrm{AFR, X; NEA, Chimp})$? Why aren’t those useful for testing the evidence of Neanderthal introgression?
+#### Task: Are ABBA or BABA sites the only ones in our data? For instance, can you find if there are any AAAB sites for the quartet $f_4(\textrm{African, X; Neanderthal, Chimp})$? Why aren’t those useful for testing the evidence of Neanderthal introgression?
 
 ``` r
 X <- "A"
@@ -214,18 +221,13 @@ count of `BABA` and `ABBA` site patterns from the
 $f_4(\textrm{AFR, X; NEA, Chimp})$ quartet, so the difference should “be
 about zero”. **Use the code above to compute `baba`, `abba`, and
 `f4_value` to for all of your mixed up samples A, B, C, …, H, and note
-down the values you got for each of them – which samples are most likely
+down the values you got for each of them. Which samples are most likely
 African and which ones are Eurasian?**
 
-*\[If you are more familiar with R, compute the counts automatically in
-a loop of some kind and make a figure.\]*
-
-#### Task: **What does it mean for this test statistic to “be about zero”? What are we missing to truly use this as a statistical significance test?**
-
-------------------------------------------------------------------------
-
-If you’re not comfortable with R, feel free to run this in full and
-answer the questions from tasks above based on the results you get:
+- **If you are more familiar with R, compute the counts automatically in
+  a loop of some kind and make a figure.**
+- **If you’re not comfortable with R, feel free to run the following
+  code in full and answer the question based on the results you get.**
 
 ``` r
 X <- c("A", "B", "C", "D", "E", "F", "G", "H")
@@ -254,6 +256,8 @@ plot(f4_values, xaxt = "n", xlab = "test sample", ylab = "f4(African, X; Neander
 abline(h = 0, lty = 2, col = "red")
 axis(side = 1, at = seq_along(X), labels = X)
 ```
+
+#### Task: **What does it mean for this test statistic to “be about zero”? What are we missing to truly use this as a statistical significance test?**
 
 We can see that the samples A-D are consistent with an $f_4$ statistic
 “value of about 0”, meaning that the BABA and ABBA counts were “about
@@ -310,9 +314,9 @@ samples!**
 
 ### Moving over to R
 
-**Create a script (`File -> New File -> R Script` in RStudio, or just
-create it in any other text edit) and save it as `exercise2.R`.** You’ll
-be writing your solutions to this exercise in that script.
+**Create a script (`File -> New File -> R Script` in RStudio) and save
+it as `exercise2.R`.** You’ll be writing your solutions to this exercise
+in that script.
 
 #### Task: Read and inspect the genotypes of all the sequenced samples
 
@@ -332,6 +336,8 @@ head(gt)
 
 nrow(gt)
 ```
+
+**Notice the presence of a new column called “another Neanderthal”.**
 
 #### Task: Estimate Neanderthal ancestry proportion in samples A-H
 
@@ -392,6 +398,20 @@ axis(side = 1, at = seq_along(X), labels = X)
 ```
 
 #### Task: **Why didn’t we plot the proportion of Neanderthal ancestry in the very last item of the `proportions` variable? What does that last element of the vector `proportions` contain and why?**
+
+By definition, the “proportion of Neanderthal ancestry in ‘another
+Neanderthal’” is 100%, which would make the plot hard to interpret. We
+use this proportion in “another Neanderthal” only to establish a
+statistical baseline of “how much Neanderthal is a Neanderthal expected
+to be”, but not as a real data point of interest:
+
+``` r
+plot(proportions * 100, xaxt = "n",
+     xlab = "test individual", ylab = "proportion of Neanderthal ancestry [%]",
+     ylim = c(0, 100))
+abline(h = 3, lty = 2, col = "red")
+axis(side = 1, at = seq_along(X), labels = X)
+```
 
 ------------------------------------------------------------------------
 
