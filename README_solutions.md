@@ -20,9 +20,10 @@ or on the Absalon page for today’s session.
 
 **The exercises involve a tiny bit of R programming. If you haven’t used
 R before, don’t stress. Feel free to copy-paste the R code chunks I
-provide below into R on your computer just as they are. The purpose is
-to think about data and try to interpret results (and maybe show how R
-is useful even for very simple statistical analyses), not worry about
+provide below into R on your computer just as they are. The purpose of
+these exercises is to think about data and to try to interpret results
+(and maybe demonstrate how R is useful for very simple statistical
+analyses, if you haven’t used it before), not worry about
 technicalities!**
 
 ## Exercise 1: Testing introgression using the $f_4$ statistic
