@@ -64,8 +64,9 @@ after another), you should be able to determine who is likely African
 it)** R console. You can either do this on your own laptop (I recommend
 this option if you have R installed) or on the server you’ve worked on
 so far. **Create a script (`File -> New File -> R Script` in RStudio, or
-just create it in any other text editor) and save it as `exercise1.R`.**
-You’ll be writing your solutions to this exercise in that script.
+just create it in any other text editor) and save it as `exercise1.R`.
+You’ll be writing your solutions to this exercise in that script and
+executing commands (and inspecting the results) in your R console.**
 
 #### Task: Read and inspect the genotypes of all the sequenced samples
 
