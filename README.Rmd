@@ -174,7 +174,7 @@ aaab <- sum(
 aaab
 ```
 
-#### Task (full solution under the line below):
+#### Task (full solution below)
 
 You know that if `X` is a African, you expect to see roughly the same count of `BABA` and `ABBA` site patterns from the $f_4(\textrm{AFR, X; NEA, Chimp})$ quartet, so the difference should "be about zero". **Use the code above to compute `baba`, `abba`, and `f4_value` to for all of your mixed up samples A, B, C, ..., H, and note down the values you got for each of them. Which samples are most likely African and which ones are Eurasian?**
 

@@ -244,7 +244,7 @@ aaab
 #> [1] 770310
 ```
 
-#### Task (full solution under the line below):
+#### Task (full solution below)
 
 You know that if `X` is a African, you expect to see roughly the same
 count of `BABA` and `ABBA` site patterns from the
