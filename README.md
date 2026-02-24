@@ -40,8 +40,8 @@ are labeled A, B, C, …, H. What a disaster!*
 *Fortunately, you also have genotypes from three other individuals whose
 identity you know for certain and who are therefore labelled properly:
 another African, a Neanderthal, and a chimpanzee. This means that you
-are able to compute an* $f_4$ \_statistic which will test for evidence
-of Neanderthal introgression in some given “test sample” $X$.
+are able to compute an* $f_4$ statistic which will test for evidence of
+Neanderthal introgression in some given “test sample” $X$.
 
 *Can you save the day and determine which of the A, B, C, …, H samples
 are probably African and which are Eurasian based on the following*
