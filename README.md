@@ -91,9 +91,10 @@ each column contains the genotypes of that individual (`0` - ancestral
 allele, `1` - derived allele). It might surprise you, but this is the
 form of the genotype data we work in genomics most often!
 
-#### Task: Count SNPs
+#### Task: Count loci
 
-**For how many loci in the genome do we have genotype data available?**
+**For how many loci in the genome do we have genotype data available? Do
+we have data for the entire genome?**
 
 ``` r
 nrow(gt)
