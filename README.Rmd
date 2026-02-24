@@ -52,7 +52,7 @@ First **read the genotype table into R**:
 gt <- read.table(url("https://github.com/bodkan/ku-introgression2026/raw/main/genotypes_ex1.tsv"), sep = "\t", header = TRUE)
 ```
 
-**Familiarize yourself with the data** by running the following R command which shows genotype information from only the first few sites in the genome. The columns of the table should correspond to the names of individuals (known or mismatched) as we described them in the introduction to this exercise.
+**Familiarize yourself with the data. What format does it have? What are the columns, and what are the rows?** You can do this by running the following R command which shows genotype information from only the first few sites in the genome. The columns of the table should correspond to the names of individuals (known or mismatched) as we described them in the introduction to this exercise.
 
 ```{r}
 head(gt)

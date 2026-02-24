@@ -699,11 +699,12 @@ this exercise in that script.</p>
 Read and inspect the genotypes of all the sequenced samples</h4>
 <p>First <strong>read the genotype table into R</strong>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>gt <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="fu">url</span>(<span class="st">&quot;https://github.com/bodkan/ku-introgression2026/raw/main/genotypes_ex1.tsv&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><strong>Familiarize yourself with the data</strong> by running the
-following R command which shows genotype information from only the first
-few sites in the genome. The columns of the table should correspond to
-the names of individuals (known or mismatched) as we described them in
-the introduction to this exercise.</p>
+<p><strong>Familiarize yourself with the data. What format does it have?
+What are the columns, and what are the rows?</strong> You can do this by
+running the following R command which shows genotype information from
+only the first few sites in the genome. The columns of the table should
+correspond to the names of individuals (known or mismatched) as we
+described them in the introduction to this exercise.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">head</span>(gt)</span></code></pre></div>
 <p>You can see that the <code>gt</code> data set is a plain R data
 frame, in which each column contains the genotypes of that individual
