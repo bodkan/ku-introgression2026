@@ -8,10 +8,11 @@ always highlighted in bold and intended to be solved one after
 another**.
 
 If you want to see this document with all the solutions included, click
-[here](README_solutions.md) (but please try to solve the exercises on
-your own at first!). This link takes you to a document with the exact
-same content as this one, except that each R code cell has its result
-(numbers, tables, plots) shown right under.
+[here](https://github.com/bodkan/ku-introgression2026/blob/main/README_solutions.md)
+(but please try to solve the exercises on your own at first!). This link
+takes you to a document with the exact same content as this one, except
+that each R code cell has its result (numbers, tables, plots) shown
+right under.
 
 You can find the slides from the lecture
 [here](https://github.com/bodkan/ku-introgression2026/blob/main/lecture.pdf)
