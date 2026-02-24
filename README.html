@@ -737,6 +737,9 @@ chromosome:</p>
 allele with the following command. Notice that it returns either
 <code>TRUE</code> or <code>FALSE</code>!</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>gt[[<span class="st">&quot;African&quot;</span>]] <span class="sc">==</span> gt[[<span class="st">&quot;Neanderthal&quot;</span>]] <span class="co"># this gives us TRUE/FALSE values </span></span></code></pre></div>
+<p><strong>You can convince yourself that <code>TRUE</code> results
+match rows in which the two chromosomes agree on an allele at that
+site.</strong></p>
 <p>Another useful shortcut trick is that we can count the number of
 elements which are <code>TRUE</code> (in this case, the number of
 matching alleles between two chromosomes) simply using the

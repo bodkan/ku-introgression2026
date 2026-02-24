@@ -140,6 +140,9 @@ with the following command. Notice that it returns either `TRUE` or
 gt[["African"]] == gt[["Neanderthal"]] # this gives us TRUE/FALSE values 
 ```
 
+**You can convince yourself that `TRUE` results match rows in which the
+two chromosomes agree on an allele at that site.**
+
 Another useful shortcut trick is that we can count the number of
 elements which are `TRUE` (in this case, the number of matching alleles
 between two chromosomes) simply using the `sum()` function like this:
